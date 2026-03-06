@@ -52,12 +52,12 @@ return L.view.extend({
 		//
 		// General
 		//
-		o = s.taboption('general', form.Flag, 'enable', _('Enable'));
+		o = s.taboption('general', form.Flag, 'enabled', _('Enable'));
 		o.rmempty = false;
 		o.default = true;
 		o.editable = true;
 
-		o = s.taboption('general', form.ListValue, 'log_verbosity', _('Log verbosity'));
+		o = s.taboption('general', form.ListValue, 'loglevel', _('Log verbosity'));
 		o.rmempty = false;
 		o.modalonly = true;
 		o.default = 1;
@@ -112,12 +112,12 @@ return L.view.extend({
 
 		o = s.taboption('rtu', form.ListValue, 'parity', _('Parity'));
 		o.rmempty = false;
-		o.default = 'none';
+		o.default = '0';
 		o.editable = true;
 		o.width = '100px';
-		o.value('none', _('None', 'Parity'));
-		o.value('even', _('Even', 'Parity'));
-		o.value('odd', _('Odd', 'Parity'));
+		o.value('0', _('None', 'Parity'));
+		o.value('1', _('Even', 'Parity'));
+		o.value('2', _('Odd', 'Parity'));
 
 		o = s.taboption('rtu', form.ListValue, 'stopbits', _('Stop bits'));
 		o.rmempty = false;
@@ -126,7 +126,7 @@ return L.view.extend({
 		o.value('1');
 		o.value('2');
 
-		o = s.taboption('rtu', form.Value, 'retries', _('Request retries'),
+		o = s.taboption('rtu', form.Value, 'rtu_retries', _('Request retries'),
 			_('Specifies maximum number of request retries (0–15, 0 — no retries)'));
 		o.rmempty = false;
 		o.datatype = 'range(0,15)';
@@ -140,7 +140,7 @@ return L.view.extend({
 		o.modalonly = true;
 		o.default = 100;
 
-		o = s.taboption('rtu', form.Value, 'wait', _('Response wait time'),
+		o = s.taboption('rtu', form.Value, 'rtu_wait', _('Response wait time'),
 			_('Specifies response wait time in milliseconds (1–10000)'));
 		o.rmempty = false;
 		o.datatype = 'range(1,10000)';
@@ -174,7 +174,7 @@ return L.view.extend({
 			return true;
 		};
 
-		o = s.taboption('tcp', form.Value, 'maxconn', _('Maximum TCP connections'),
+		o = s.taboption('tcp', form.Value, 'max_connections', _('Maximum TCP connections'),
 			_('Specifies maximum number of simultaneous TCP connections (1–128)'));
 		o.rmempty = false;
 		o.modalonly = true;
